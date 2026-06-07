@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atividades Musicais Online — +150 Materiais para Professores de Música</title>
+  <meta name="description" content="Mais de 150 atividades musicais prontas para usar em sala de aula. Flashcards, jogo da memória e planejamento de aulas para professores de música." />
+
+  <!-- Favicon SVG inline via data URI -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; }
+    h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #FF6B6B 0%, #845EC2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-18px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+
+    @keyframes notif-in {
+      from { opacity: 0; transform: translateX(-100px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .notif-in { animation: notif-in 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(236,72,153,0.5); }
+      70%  { box-shadow: 0 0 0 16px rgba(236,72,153,0); }
+      100% { box-shadow: 0 0 0 0 rgba(236,72,153,0); }
+    }
+    .pulse-ring { animation: pulse-ring 2s infinite; }
+
+    /* Modal backdrop */
+    .modal-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .modal-box {
+      background: #fff;
+      border-radius: 24px;
+      max-width: 500px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+    }
+    .hidden { display: none !important; }
+
+    /* FAQ accordion */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+    }
+    .faq-answer.open {
+      max-height: 300px;
+      padding-bottom: 16px;
+    }
+    .faq-icon { transition: transform 0.3s ease; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+
+    /* Fixed banner */
+    #top-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    body { padding-top: 40px; }
+    @media (min-width: 640px) { body { padding-top: 52px; } }
+
+    /* CPA button press effect */
+    .cpa-btn:active { transform: scale(0.97) translateY(2px); }
+
+    /* Plans grid — Completo first on mobile, Básico first on desktop */
+    #plans-grid { display: grid; }
+    @media (min-width: 768px) {
+      #plans-grid .plan-card:nth-child(1) { order: 1 !important; }
+      #plans-grid .plan-card:nth-child(2) { order: 2 !important; }
+    }
+
+    /* Notification */
+    #notif-box { position: fixed; bottom: 24px; left: 24px; z-index: 150; pointer-events: none; }
+
+    /* Card equal height */
+    #plans-grid { align-items: stretch; }
+    .plan-card { display: flex; flex-direction: column; height: 100%; }
+    .plan-card-inner { display: flex; flex-direction: column; flex: 1; }
+    .plan-card-cta { margin-top: auto; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 overflow-x-hidden">
+
+<!-- ═══════════════════════════════════════════════
+     BANNER OFERTA LIMITADA
+═══════════════════════════════════════════════ -->
+<div id="top-banner" class="bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 text-white py-2 px-3 text-center shadow-lg">
+  <div class="flex flex-row items-center justify-center gap-2 sm:gap-3 font-bold font-poppins">
+    <span class="hidden sm:flex items-center gap-2 text-sm sm:text-base">
+      <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      OFERTA LIMITADA — ENCERRA EM:
+    </span>
+    <span class="sm:hidden flex items-center gap-1 font-black" style="font-size:11px">
+      <svg class="w-3 h-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      ENCERRA EM:
+    </span>
+    <span class="flex items-center font-black" style="gap:2px">
+      <span id="cnt-h" class="bg-white text-red-600 rounded text-center" style="padding:2px 6px;font-size:clamp(11px,3vw,16px)">02</span>
+      <span style="font-size:clamp(11px,3vw,16px)">:</span>
+      <span id="cnt-m" class="bg-white text-red-600 rounded text-center" style="padding:2px 6px;font-size:clamp(11px,3vw,16px)">47</span>
+      <span style="font-size:clamp(11px,3vw,16px)">:</span>
+      <span id="cnt-s" class="bg-white text-red-600 rounded text-center" style="padding:2px 6px;font-size:clamp(11px,3vw,16px)">13</span>
+    </span>
+    <button onclick="scrollToPlanos()" class="bg-white text-red-600 font-black rounded-full hover:bg-yellow-100 transition-colors whitespace-nowrap" style="font-size:clamp(10px,2.5vw,13px);padding:2px 10px">
+      <span class="hidden sm:inline">GARANTIR AGORA</span>
+      <span class="sm:hidden">GARANTIR</span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section class="relative pt-16 pb-12 overflow-hidden bg-gradient-to-b from-fuchsia-50 via-white to-white">
+  <!-- blobs -->
+  <div class="absolute top-10 left-10 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply blur-3xl opacity-30 animate-float pointer-events-none"></div>
+  <div class="absolute top-20 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply blur-3xl opacity-30 animate-float pointer-events-none" style="animation-delay:2s"></div>
+
+  <div class="container mx-auto px-4 max-w-4xl relative text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-600 font-bold text-sm mb-6 uppercase tracking-wider font-poppins">
+      🎵 Para Professores de Música
+    </div>
+
+    <h1 class="text-4xl md:text-6xl font-black font-poppins leading-tight mb-8 text-slate-900">
+      Mais de <span class="text-gradient">150 Atividades Musicais</span> prontas para usar em sala de aula!
+    </h1>
+
+    <!-- Selos — mobile: ACIMA da VSL -->
+    <div class="flex md:hidden items-center justify-center gap-3 mb-4">
+      <div class="flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 shadow-sm border border-slate-100">
+        <img src="icone-canva.webp" alt="Editável no Canva" class="w-5 h-5 object-contain" />
+        <span class="text-slate-700 font-semibold text-xs">Editável no Canva</span>
+      </div>
+      <div class="flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 shadow-sm border border-slate-100">
+        <img src="icone-whatsapp.webp" alt="Entrega via WhatsApp" class="w-5 h-5 object-contain" />
+        <span class="text-slate-700 font-semibold text-xs">Entrega via WhatsApp</span>
+      </div>
+    </div>
+
+    <!-- VSL 9:16 -->
+    <div class="flex justify-center mb-4">
+      <div class="relative w-full max-w-[340px] rounded-2xl overflow-hidden shadow-2xl border-4 border-fuchsia-200 bg-black" style="aspect-ratio:9/16;">
+        <video id="vsl-video" class="absolute inset-0 w-full h-full object-cover" src="vsl.mp4" controls playsinline></video>
+        <div id="vsl-play-btn" class="md:hidden absolute inset-0 flex flex-col items-center justify-center z-10" style="background:rgba(0,0,0,0.25);" onclick="playVsl()">
+          <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.95);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,0.25);margin-bottom:12px;">
+            <svg style="width:28px;height:28px;color:#a855f7;margin-left:4px;fill:#a855f7;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span style="color:#fff;font-weight:900;font-size:14px;font-family:'Poppins',sans-serif;background:rgba(0,0,0,0.5);padding:6px 16px;border-radius:999px;letter-spacing:.05em;">Clique para assistir</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selos — desktop: ABAIXO da VSL -->
+    <div class="hidden md:flex items-center justify-center gap-4 mb-6">
+      <div class="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-slate-100">
+        <img src="icone-canva.webp" alt="Editável no Canva" class="w-7 h-7 object-contain" />
+        <span class="text-slate-700 font-semibold text-sm">Editável no Canva</span>
+      </div>
+      <div class="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-slate-100">
+        <img src="icone-whatsapp.webp" alt="Entrega via WhatsApp" class="w-7 h-7 object-contain" />
+        <span class="text-slate-700 font-semibold text-sm">Entrega via WhatsApp</span>
+      </div>
+    </div>
+
+    <!-- subheadline abaixo da VSL -->
+    <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed font-inter">
+      Pare de perder horas planejando. Tenha acesso imediato a atividades, flashcards, jogo da memória e planejamentos que vão encantar seus alunos.
+    </p>
+
+    <div class="max-w-sm mx-auto">
+      <button onclick="scrollToPlanos()" class="cpa-btn w-full rounded-2xl font-black font-poppins uppercase tracking-wide shadow-xl transition-all duration-200 hover:scale-105 bg-gradient-to-r from-green-500 via-green-400 to-emerald-500 text-white border-b-4 border-green-700 text-xl py-5 px-8 flex items-center justify-center gap-3">
+        🛒 SIM! QUERO ECONOMIZAR TEMPO
+      </button>
+      <p class="text-xs text-slate-400 mt-3 flex items-center justify-center gap-1">
+        ✓ Pagamento 100% seguro &nbsp;·&nbsp; Acesso imediato
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SOCIAL PROOF STRIP
+═══════════════════════════════════════════════ -->
+<div class="bg-slate-900 py-6 text-white text-center">
+  <div class="container mx-auto px-4 flex flex-wrap items-center justify-center gap-8 text-sm font-bold font-poppins uppercase tracking-wide">
+    <span>⭐ +2.000 professores</span>
+    <span>✓ Download imediato</span>
+    <span>✓ Acesso vitalício</span>
+    <span>✓ Suporte por e-mail</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     O QUE VOCÊ VAI RECEBER
+═══════════════════════════════════════════════ -->
+<section class="py-20 bg-gradient-to-b from-fuchsia-50 to-white">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-black font-poppins mb-4 text-slate-900">O que você vai receber</h2>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto">Tudo pronto para imprimir e usar na próxima aula.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
+      <div class="bg-pink-50 border-2 border-pink-200 rounded-3xl p-6 flex items-start gap-5">
+        <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-md">
+          <img src="prod-atividades.png" alt="+150 Atividades Musicais" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h3 class="text-xl font-black font-poppins mb-2 text-slate-900">+150 Atividades Musicais</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">Fichas de teoria, colorir, ritmo, leitura e muito mais — para todas as idades e níveis.</p>
+        </div>
+      </div>
+      <div class="bg-purple-50 border-2 border-purple-200 rounded-3xl p-6 flex items-start gap-5">
+        <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-md">
+          <img src="prod-flashcards.png" alt="+50 Flashcards Musicais" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h3 class="text-xl font-black font-poppins mb-2 text-slate-900">+50 Flashcards Musicais</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">Cartões coloridos de notas, figuras rítmicas, famílias de instrumentos e símbolos musicais.</p>
+        </div>
+      </div>
+      <div class="bg-orange-50 border-2 border-orange-200 rounded-3xl p-6 flex items-start gap-5">
+        <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-md">
+          <img src="prod-memoria.png" alt="Jogo da Memória Musical" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h3 class="text-xl font-black font-poppins mb-2 text-slate-900">Jogo da Memória Musical</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">Jogo pedagógico pronto para imprimir — alunos aprendem brincando e adoram.</p>
+        </div>
+      </div>
+      <div class="bg-green-50 border-2 border-green-200 rounded-3xl p-6 flex items-start gap-5">
+        <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-md">
+          <img src="prod-planejamento.png" alt="Planejamento de Aulas" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h3 class="text-xl font-black font-poppins mb-2 text-slate-900">Planejamento de Aulas</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">Modelos de planejamento estruturados para economizar seu tempo toda semana.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-sm mx-auto">
+      <button onclick="scrollToPlanos()" class="cpa-btn w-full rounded-2xl font-black font-poppins uppercase tracking-wide shadow-lg transition-all duration-200 hover:scale-105 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 text-white py-5 px-8 text-lg border-b-4 border-purple-800 flex items-center justify-center gap-3">
+        ⚡ QUERO TODOS ESSES MATERIAIS
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PARA QUEM É
+═══════════════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-black font-poppins mb-4 text-slate-900">Este material é para você se...</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+      <div class="flex items-start gap-3 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-green-600 font-bold text-xs">✓</div>
+        <span class="text-slate-700 font-medium leading-snug">Você é professor(a) de musicalização infantil e quer aulas mais dinâmicas</span>
+      </div>
+      <div class="flex items-start gap-3 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-green-600 font-bold text-xs">✓</div>
+        <span class="text-slate-700 font-medium leading-snug">Você leciona em escola regular e precisa de atividades prontas e criativas</span>
+      </div>
+      <div class="flex items-start gap-3 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-green-600 font-bold text-xs">✓</div>
+        <span class="text-slate-700 font-medium leading-snug">Você dá aulas particulares e quer impressionar seus alunos e responsáveis</span>
+      </div>
+      <div class="flex items-start gap-3 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-green-600 font-bold text-xs">✓</div>
+        <span class="text-slate-700 font-medium leading-snug">Você trabalha em conservatório e precisa otimizar o planejamento semanal</span>
+      </div>
+      <div class="flex items-start gap-3 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-green-600 font-bold text-xs">✓</div>
+        <span class="text-slate-700 font-medium leading-snug">Você cansa de criar tudo do zero toda semana antes das aulas</span>
+      </div>
+      <div class="flex items-start gap-3 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-green-600 font-bold text-xs">✓</div>
+        <span class="text-slate-700 font-medium leading-snug">Você quer economizar tempo sem abrir mão da qualidade pedagógica</span>
+      </div>
+    </div>
+    <div class="max-w-sm mx-auto">
+      <button onclick="scrollToPlanos()" class="cpa-btn w-full rounded-2xl font-black font-poppins uppercase tracking-wide shadow-xl transition-all duration-200 hover:scale-105 bg-gradient-to-r from-green-500 via-green-400 to-emerald-500 text-white border-b-4 border-green-700 text-lg py-5 px-8 flex items-center justify-center gap-3">
+        🛒 SIM, É PARA MIM! QUERO AGORA
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     DEPOIMENTOS
+═══════════════════════════════════════════════ -->
+<section class="py-20 bg-fuchsia-50">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-black font-poppins mb-4 text-slate-900">O que os professores dizem</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white p-7 rounded-3xl shadow-sm border border-slate-100">
+        <div class="flex gap-0.5 mb-5 text-yellow-400">⭐⭐⭐⭐⭐</div>
+        <p class="text-slate-700 text-base mb-6 italic leading-relaxed">"Meus alunos amaram o jogo da memória! O material economizou muito o meu tempo no planejamento semanal."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full overflow-hidden ring-2 ring-fuchsia-200 flex-shrink-0">
+            <img src="prof1.jpg" alt="Mariana Silva" class="w-full h-full object-cover" style="object-position:center 12%" />
+          </div>
+          <div>
+            <p class="font-bold font-poppins text-slate-900 text-sm">Mariana Silva</p>
+            <p class="text-xs text-slate-500">Professora de Piano</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-7 rounded-3xl shadow-sm border border-slate-100">
+        <div class="flex gap-0.5 mb-5 text-yellow-400">⭐⭐⭐⭐⭐</div>
+        <p class="text-slate-700 text-base mb-6 italic leading-relaxed">"As atividades são lindas e muito bem estruturadas. Recomendo para qualquer educador musical que quer se destacar!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full overflow-hidden ring-2 ring-fuchsia-200 flex-shrink-0">
+            <img src="prof2.jpg" alt="Juliana Costa" class="w-full h-full object-cover" style="object-position:center 18%" />
+          </div>
+          <div>
+            <p class="font-bold font-poppins text-slate-900 text-sm">Juliana Costa</p>
+            <p class="text-xs text-slate-500">Musicalização Infantil</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-7 rounded-3xl shadow-sm border border-slate-100">
+        <div class="flex gap-0.5 mb-5 text-yellow-400">⭐⭐⭐⭐⭐</div>
+        <p class="text-slate-700 text-base mb-6 italic leading-relaxed">"Comprei o plano completo e valeu cada centavo. Os flashcards são perfeitos para fixar a leitura rítmica com as crianças."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full overflow-hidden ring-2 ring-fuchsia-200 flex-shrink-0">
+            <img src="prof3.jpg" alt="Fernanda Alves" class="w-full h-full object-cover" style="object-position:center 10%" />
+          </div>
+          <div>
+            <p class="font-bold font-poppins text-slate-900 text-sm">Fernanda Alves</p>
+            <p class="text-xs text-slate-500">Escola de Música</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-sm mx-auto">
+      <button onclick="scrollToPlanos()" class="cpa-btn w-full rounded-2xl font-black font-poppins uppercase tracking-wide shadow-lg transition-all duration-200 hover:scale-105 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 text-white py-5 px-8 text-lg border-b-4 border-purple-800 flex items-center justify-center gap-3">
+        ⚡ QUERO ESSES RESULTADOS TAMBÉM
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PLANOS
+═══════════════════════════════════════════════ -->
+<section id="planos" class="py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+  <div class="container mx-auto px-4 max-w-5xl relative">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 border border-red-200 text-red-600 font-bold text-sm mb-4 uppercase tracking-wider font-poppins">
+        🕐 Oferta por tempo limitado
+      </div>
+      <h2 class="text-4xl font-black font-poppins mb-4 text-slate-900">Escolha seu plano e comece agora</h2>
+      <p class="text-slate-500 text-xl">Pagamento único. Acesso vitalício. Download imediato.</p>
+    </div>
+
+    <div id="plans-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Plano Básico -->
+      <div class="plan-card bg-white border-2 border-slate-200 rounded-3xl p-8 shadow-sm" style="order:2">
+        <div class="plan-card-inner">
+          <h3 class="text-2xl font-black font-poppins mb-1 text-slate-900">Plano Básico</h3>
+          <p class="text-slate-500 text-sm mb-6">Para começar com o essencial</p>
+          <div class="flex items-end gap-1 mb-8">
+            <span class="text-5xl font-black font-poppins text-slate-900">R$10</span>
+            <span class="text-slate-400 mb-2 text-lg">,00</span>
+          </div>
+          <ul class="space-y-3 mb-8 flex-grow">
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-white text-xs font-bold">✓</span>
+              <span class="text-slate-600">+150 atividades musicais prontas para usar</span>
+            </li>
+          </ul>
+          <div class="plan-card-cta">
+            <button onclick="openUpsell()" class="w-full py-4 rounded-xl border-2 border-slate-300 text-slate-600 font-bold font-poppins text-base hover:bg-slate-50 hover:border-slate-400 transition-colors">
+              Comprar Plano Básico — R$10
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plano Completo -->
+      <div class="plan-card rounded-3xl p-[3px] bg-gradient-to-br from-pink-500 via-fuchsia-500 to-purple-500 shadow-2xl" style="order:1">
+        <div class="plan-card-inner bg-white rounded-[22px] p-8 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 text-white text-xs font-black px-4 py-2 text-center uppercase tracking-widest font-poppins">
+            ⭐ MAIS POPULAR — MELHOR CUSTO-BENEFÍCIO
+          </div>
+          <div class="mt-8 plan-card-inner">
+            <h3 class="text-2xl font-black font-poppins mb-1 text-slate-900">Plano Completo</h3>
+            <p class="text-slate-500 text-sm mb-5">Tudo que você precisa para aulas incríveis</p>
+            <div class="flex items-end gap-1 mb-8">
+              <span class="text-6xl font-black font-poppins text-fuchsia-600">R$29</span>
+              <span class="text-slate-400 mb-2 text-xl">,90</span>
+            </div>
+            <ul class="space-y-4 mb-8 flex-grow">
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-white text-xs font-bold">✓</span>
+                <span class="text-slate-600">+150 atividades musicais</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-white text-xs font-bold">✓</span>
+                <span class="font-bold text-slate-900">+50 flashcards musicais</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-white text-xs font-bold">✓</span>
+                <span class="font-bold text-slate-900">Jogo da memória musical</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-white text-xs font-bold">✓</span>
+                <span class="font-bold text-slate-900">Planejamento de aulas</span>
+              </li>
+            </ul>
+            <div class="plan-card-cta space-y-3">
+              <a href="https://pay.wiapy.com/7rrbsjWMi_" target="_blank" rel="noopener noreferrer"
+                class="cpa-btn block w-full rounded-2xl font-black font-poppins uppercase tracking-wide shadow-xl transition-all duration-200 hover:scale-105 bg-gradient-to-r from-green-500 via-green-400 to-emerald-500 text-white border-b-4 border-green-700 text-lg py-5 px-8 text-center flex items-center justify-center gap-3">
+                🛒 GARANTIR MEU PLANO COMPLETO
+              </a>
+              <p class="text-center text-xs text-slate-400 flex items-center justify-center gap-1">
+                ✓ PIX, cartão ou boleto &nbsp;·&nbsp; Download imediato
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Garantia -->
+    <div class="mt-14 text-center">
+      <div class="inline-flex flex-col items-center gap-3 bg-yellow-50 border-2 border-yellow-200 rounded-3xl px-10 py-8 max-w-lg mx-auto">
+        <div class="w-16 h-16 rounded-full bg-yellow-100 border-2 border-yellow-400 flex items-center justify-center text-3xl">🛡️</div>
+        <h4 class="text-xl font-black font-poppins text-slate-900">Garantia de 7 dias</h4>
+        <p class="text-slate-600 text-sm leading-relaxed">Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4 max-w-3xl">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-black font-poppins mb-4 text-slate-900">Perguntas Frequentes</h2>
+    </div>
+    <div class="bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-100 mb-12">
+      <div class="faq-item border-b border-slate-200 last:border-0">
+        <button class="w-full text-left py-4 flex items-center justify-between font-bold font-poppins text-base text-slate-800 hover:text-fuchsia-600 transition-colors" onclick="toggleFaq(this)">
+          Como recebo o material?
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer text-slate-600 text-sm leading-relaxed">
+          Imediatamente após a aprovação do pagamento, você recebe um e-mail com o link para baixar todos os arquivos em PDF de alta qualidade.
+        </div>
+      </div>
+      <div class="faq-item border-b border-slate-200 last:border-0">
+        <button class="w-full text-left py-4 flex items-center justify-between font-bold font-poppins text-base text-slate-800 hover:text-fuchsia-600 transition-colors" onclick="toggleFaq(this)">
+          Posso imprimir quantas vezes quiser?
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer text-slate-600 text-sm leading-relaxed">
+          Sim! Uma vez baixado, o material é seu para sempre. Imprima para todos os seus alunos, ano após ano.
+        </div>
+      </div>
+      <div class="faq-item border-b border-slate-200 last:border-0">
+        <button class="w-full text-left py-4 flex items-center justify-between font-bold font-poppins text-base text-slate-800 hover:text-fuchsia-600 transition-colors" onclick="toggleFaq(this)">
+          Serve para qual faixa etária?
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer text-slate-600 text-sm leading-relaxed">
+          Os materiais foram desenvolvidos principalmente para crianças de 4 a 12 anos, mas podem ser adaptados para outras idades dependendo do nível musical.
+        </div>
+      </div>
+      <div class="faq-item border-b border-slate-200 last:border-0">
+        <button class="w-full text-left py-4 flex items-center justify-between font-bold font-poppins text-base text-slate-800 hover:text-fuchsia-600 transition-colors" onclick="toggleFaq(this)">
+          Quais são as formas de pagamento?
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer text-slate-600 text-sm leading-relaxed">
+          Aceitamos PIX (acesso imediato), cartão de crédito em até 3x sem juros, ou boleto bancário.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="w-full text-left py-4 flex items-center justify-between font-bold font-poppins text-base text-slate-800 hover:text-fuchsia-600 transition-colors" onclick="toggleFaq(this)">
+          E se eu não gostar?
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer text-slate-600 text-sm leading-relaxed">
+          Você tem 7 dias de garantia total. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do valor pago. Sem burocracia.
+        </div>
+      </div>
+    </div>
+    <div class="max-w-sm mx-auto">
+      <button onclick="scrollToPlanos()" class="cpa-btn w-full rounded-2xl font-black font-poppins uppercase tracking-wide shadow-xl transition-all duration-200 hover:scale-105 bg-gradient-to-r from-green-500 via-green-400 to-emerald-500 text-white border-b-4 border-green-700 text-lg py-5 px-8 flex items-center justify-center gap-3">
+        🛒 QUERO COMEÇAR AGORA
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="bg-slate-950 py-10 text-slate-500 border-t border-slate-800 text-center">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="text-pink-500 text-xl">🎵</span>
+      <span class="text-lg font-black font-poppins text-white">Atividades Musicais</span>
+    </div>
+    <p class="text-sm mb-3">Ajudando professores a criar aulas inesquecíveis.</p>
+    <p class="text-xs text-slate-600">
+      &copy; <span id="year"></span> Atividades Musicais Online. Todos os direitos reservados.<br/>
+      Contato: suporte@atividadesmusicais.com.br
+    </p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL DE UPSELL
+═══════════════════════════════════════════════ -->
+<div id="upsell-modal" class="modal-backdrop hidden" onclick="closeUpsellOnBackdrop(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <!-- Header -->
+    <div class="relative pt-8 pb-6 px-6 text-center" style="background: linear-gradient(135deg,#a855f7,#7c3aed,#ec4899);">
+      <button onclick="closeUpsell()" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity text-white font-bold text-lg" style="background:rgba(255,255,255,0.2)">✕</button>
+      <div class="text-4xl mb-3">⏰</div>
+      <h3 class="text-white font-black font-poppins text-lg leading-tight">Espere! Oferta especial só para você</h3>
+      <p class="text-sm mt-1" style="color:rgba(255,255,255,0.8)">Esta oferta expira quando você fechar esta janela</p>
+    </div>
+
+    <div class="p-6">
+      <!-- Bloco de preço — elemento principal -->
+      <div class="rounded-2xl p-5 mb-5 text-center border-2 border-fuchsia-200" style="background: linear-gradient(135deg,#fdf4ff,#ede9fe);">
+        <p class="text-slate-500 text-sm font-medium mb-1">Plano Completo por apenas</p>
+        <div class="flex items-center justify-center gap-3 mb-2">
+          <span class="text-slate-400 line-through text-lg">R$29,90</span>
+          <span class="text-white text-xs font-black px-2.5 py-1 rounded-full uppercase bg-green-500">Economize R$5</span>
+        </div>
+        <div class="flex items-end justify-center gap-1">
+          <span class="font-black font-poppins leading-none text-fuchsia-600" style="font-size:3.5rem">R$24</span>
+          <span class="text-2xl font-black text-fuchsia-500 mb-1">,90</span>
+        </div>
+        <p class="text-slate-400 text-xs mt-2">Pagamento único · Acesso vitalício</p>
+      </div>
+
+      <!-- O que está incluso -->
+      <div class="mb-5">
+        <p class="text-slate-500 text-xs font-bold uppercase tracking-wide mb-3">Tudo incluído no Plano Completo:</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">✓</span>
+            <span class="text-slate-700 font-medium text-sm">+150 atividades musicais</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">✓</span>
+            <span class="text-slate-700 font-medium text-sm">+50 flashcards musicais</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">✓</span>
+            <span class="text-slate-700 font-medium text-sm">Jogo da memória musical</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full bg-fuchsia-500 flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">✓</span>
+            <span class="text-slate-700 font-medium text-sm">Planejamento de aulas</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <a href="https://pay.wiapy.com/rZnyp3bAnL" target="_blank" rel="noopener noreferrer"
+          class="cpa-btn block w-full py-4 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 text-white font-black font-poppins text-base uppercase tracking-wide shadow-lg hover:scale-105 transition-transform border-b-4 border-green-700 text-center flex items-center justify-center gap-2">
+          🛒 SIM! Quero o Completo por R$24,90
+        </a>
+        <a href="https://pay.wiapy.com/rF56v1jtlo" target="_blank" rel="noopener noreferrer"
+          class="block w-full py-2.5 text-slate-400 hover:text-slate-600 font-medium text-xs transition-colors text-center">
+          Não, obrigado. Quero só o Básico por R$10,00
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     NOTIFICAÇÃO DE COMPRA
+═══════════════════════════════════════════════ -->
+<div id="notif-box"></div>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+  // ── Ano footer ──
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── Countdown ──
+  let totalSecs = 2 * 3600 + 47 * 60 + 13;
+  function updateCountdown() {
+    if (totalSecs <= 0) return;
+    totalSecs--;
+    const h = Math.floor(totalSecs / 3600);
+    const m = Math.floor((totalSecs % 3600) / 60);
+    const s = totalSecs % 60;
+    document.getElementById('cnt-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cnt-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cnt-s').textContent = String(s).padStart(2,'0');
+  }
+  setInterval(updateCountdown, 1000);
+
+  // ── Scroll suave para planos ──
+  function scrollToPlanos() {
+    document.getElementById('planos').scrollIntoView({ behavior: 'smooth' });
+  }
+
+
+  // ── VSL play button (mobile) ──
+  function playVsl() {
+    var v = document.getElementById('vsl-video');
+    var btn = document.getElementById('vsl-play-btn');
+    if (v) { v.muted = false; v.play().catch(function(){}); }
+    if (btn) { btn.style.display = 'none'; }
+  }
+  // Hide play overlay on desktop
+  if (window.innerWidth >= 768) {
+    var vslBtn = document.getElementById('vsl-play-btn');
+    if (vslBtn) vslBtn.style.display = 'none';
+  }
+
+  // ── Modal upsell ──
+  function openUpsell() {
+    document.getElementById('upsell-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeUpsell() {
+    document.getElementById('upsell-modal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  function closeUpsellOnBackdrop(e) {
+    if (e.target === document.getElementById('upsell-modal')) closeUpsell();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeUpsell(); });
+
+  // ── FAQ accordion ──
+  function toggleFaq(btn) {
+    const item   = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    // fechar todos
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-answer').classList.remove('open');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // ── Notificações de compra ──
+  const nomes   = ['Maria S.','Juliana C.','Fernanda A.','Camila R.','Ana Paula M.','Beatriz L.','Larissa T.','Priscila O.','Débora N.','Raquel F.'];
+  const cidades = ['São Paulo, SP','Rio de Janeiro, RJ','Belo Horizonte, MG','Curitiba, PR','Salvador, BA','Fortaleza, CE','Porto Alegre, RS','Recife, PE','Goiânia, GO','Manaus, AM'];
+  const planos  = ['Plano Completo','Plano Completo','Plano Completo','Plano Básico','Plano Completo'];
+
+  let notifTimeout = null;
+
+  function showNotif() {
+    const box    = document.getElementById('notif-box');
+    const nome   = nomes[Math.floor(Math.random() * nomes.length)];
+    const cidade = cidades[Math.floor(Math.random() * cidades.length)];
+    const plano  = planos[Math.floor(Math.random() * planos.length)];
+
+    box.innerHTML = `
+      <div class="notif-in pointer-events-auto" style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.12);padding:10px 12px;max-width:210px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#a855f7);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-family:'Poppins',sans-serif;font-size:12px;flex-shrink:0;">
+          ${nome.charAt(0)}
+        </div>
+        <div style="flex:1;min-width:0;overflow:hidden;">
+          <p style="color:#0f172a;font-weight:700;font-size:11px;font-family:'Poppins',sans-serif;line-height:1.3;margin:0 0 1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${nome} de ${cidade}</p>
+          <p style="color:#64748b;font-size:10px;margin:0;line-height:1.3;">adquiriu o <strong style="color:#a855f7;">${plano}</strong></p>
+        </div>
+        <button onclick="this.closest('div[style]').remove()" style="color:#cbd5e1;border:none;background:none;cursor:pointer;font-size:13px;flex-shrink:0;padding:0;margin-left:4px;line-height:1;">✕</button>
+      </div>`;
+
+    if (notifTimeout) clearTimeout(notifTimeout);
+    notifTimeout = setTimeout(() => { box.innerHTML = ''; }, 5000);
+
+    // agendar próxima
+    const next = 10000 + Math.random() * 10000;
+    setTimeout(showNotif, next);
+  }
+
+  // primeira notificação após 3s
+  setTimeout(showNotif, 3000);
+</script>
+
+</body>
+</html>
